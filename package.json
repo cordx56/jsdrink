@@ -2,8 +2,8 @@
   "name": "jsdrink",
   "version": "0.0.1",
   "description": "Simple parser combinators library",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/cordx56/jsdrink"
@@ -18,11 +18,15 @@
     "parser combinators",
     "parser-combinators"
   ],
+  "private": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "prebuild": "rm -rf dist",
     "format": "prettier -w src",
-    "prePublish": "yarn run build",
+    "prepublish": "yarn run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
