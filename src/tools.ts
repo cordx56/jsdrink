@@ -3,14 +3,17 @@ import { ParseError } from "./error";
 
 export const inputToBytes = (input: ParseInput): Uint8Array => {
   if (typeof input === "string") {
-    return (new TextEncoder).encode(input);
+    return new TextEncoder().encode(input);
   } else {
     return input;
   }
 };
 
-export const bytesToString = (bytes: Uint8Array, encoding: string = "utf-8"): string => {
-  return (new TextDecoder(encoding)).decode(bytes);
+export const bytesToString = (
+  bytes: Uint8Array,
+  encoding: string = "utf-8"
+): string => {
+  return new TextDecoder(encoding).decode(bytes);
 };
 
 export const getCharCode = (char: string): number => {
@@ -34,8 +37,8 @@ export const optional = <T>(p: ParserFunc<T>): ParserFunc<T> => {
 
 // opt function is alias of the Optional function
 export const opt = <T>(p: ParserFunc<T>): ParserFunc<T> => {
-  return optional(p)
-}
+  return optional(p);
+};
 
 // any function tries functions given as arguments in order.
 export const any = <T>(...ps: ParserFunc<T>[]): ParserFunc<T> => {
@@ -48,11 +51,14 @@ export const any = <T>(...ps: ParserFunc<T>[]): ParserFunc<T> => {
     }
     return new ParseError("any", input.length, null);
   };
-}
+};
 
 // transform function transforms the parsed result to another type
 // using the transformer function given as an argument.
-export const transform = <T, U>(p: ParserFunc<T>, transformer: (b: T | null) => U | null): ParserFunc<U> => {
+export const transform = <T, U>(
+  p: ParserFunc<T>,
+  transformer: (b: T | null) => U | null
+): ParserFunc<U> => {
   return (input: ParseInput): ParseResult<U> => {
     const res = p(input);
     if (res instanceof ParseError) {
@@ -64,11 +70,18 @@ export const transform = <T, U>(p: ParserFunc<T>, transformer: (b: T | null) => 
 };
 
 // tf function is alias of the Transform function
-export const tf = <T, U>(p: ParserFunc<T>, transformer: (b: T | null) => U): ParserFunc<U> => {
+export const tf = <T, U>(
+  p: ParserFunc<T>,
+  transformer: (b: T | null) => U
+): ParserFunc<U> => {
   return transform(p, transformer);
 };
 
-const many = <T>(p: ParserFunc<T>, minCount: number, errStr: "many0" | "many1"): ParserFunc<(T | null)[]> => {
+const many = <T>(
+  p: ParserFunc<T>,
+  minCount: number,
+  errStr: "many0" | "many1"
+): ParserFunc<(T | null)[]> => {
   return (input: ParseInput): ParseResult<(T | null)[]> => {
     let result = [];
     let remain = input;
@@ -97,14 +110,14 @@ const many = <T>(p: ParserFunc<T>, minCount: number, errStr: "many0" | "many1"):
 // the function passed as an argument.
 export const many0 = <T>(p: ParserFunc<T>): ParserFunc<(T | null)[]> => {
   return many(p, 0, "many0");
-}
+};
 // many1 function repeatedly attempts to parse with
 // the function passed as an argument.
 //
 // many1 function require at least 1 matching.
 export const many1 = <T>(p: ParserFunc<T>): ParserFunc<(T | null)[]> => {
   return many(p, 1, "many1");
-}
+};
 
 // noRemain function forces the function passed as
 // an argument to consume all input.

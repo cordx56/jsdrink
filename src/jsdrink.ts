@@ -12,7 +12,10 @@ export type ParseInput = Uint8Array | string;
 //
 // The Remain field is the remainder of the parsed input.
 export class ParseSuccess<T> {
-  constructor(public readonly parsed: T | null, public readonly remain: ParseInput) {}
+  constructor(
+    public readonly parsed: T | null,
+    public readonly remain: ParseInput
+  ) {}
 }
 
 // ParseResult contains a pointer to the parsed object and

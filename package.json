@@ -1,6 +1,6 @@
 {
   "name": "jsdrink",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Simple parser combinators library",
   "main": "index.js",
   "types": "index.d.ts",
@@ -21,6 +21,7 @@
   "scripts": {
     "build": "tsc",
     "prebuild": "rm -rf dist",
+    "format": "prettier -w src",
     "prePublish": "yarn run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
