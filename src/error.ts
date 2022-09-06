@@ -19,7 +19,8 @@ export type FailureCause =
   | "numeric0"
   | "numeric1"
   | "alphaNumeric0"
-  | "alphaNumeric1";
+  | "alphaNumeric1"
+  | "string";
 
 // Location contains row number, col number and error line.
 export class Location {

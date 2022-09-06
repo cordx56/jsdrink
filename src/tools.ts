@@ -8,6 +8,13 @@ export const inputToBytes = (input: ParseInput): Uint8Array => {
     return input;
   }
 };
+export const inputToString = (input: ParseInput): string => {
+  if (typeof input === "string") {
+    return input;
+  } else {
+    return new TextDecoder().decode(input);
+  }
+};
 
 export const bytesToString = (
   bytes: Uint8Array,

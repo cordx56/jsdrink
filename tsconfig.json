@@ -13,7 +13,8 @@
     "sourceMap": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src/index.ts"
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/testhelpers.ts"
   ]
 }
