@@ -1,7 +1,10 @@
 import { ParseResult } from "./jsdrink";
 import { ParseError } from "./error";
 
-export const checkError = <T>(res: ParseResult<T>, toStrictEqual: ParseError) => {
+export const checkError = <T>(
+  res: ParseResult<T>,
+  toStrictEqual: ParseError
+) => {
   expect(res instanceof ParseError).toBe(true);
   if (res instanceof ParseError) {
     expect(res.cause).toBe(toStrictEqual.cause);

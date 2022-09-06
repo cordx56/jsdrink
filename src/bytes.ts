@@ -24,9 +24,7 @@ export const bytes = (test: ParseInput): ParserFunc<Uint8Array> => {
     if (inputBytes.length < testBytes.length) {
       return new ParseError("bytes", inputBytes.length, null);
     }
-    if (
-      checkBytesEqual(testBytes, inputBytes.subarray(0, testBytes.length))
-    ) {
+    if (checkBytesEqual(testBytes, inputBytes.subarray(0, testBytes.length))) {
       const remainBytes = inputBytes.subarray(testBytes.length);
       return new ParseSuccess(testBytes, remainBytes);
     } else {

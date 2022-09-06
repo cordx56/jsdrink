@@ -22,6 +22,9 @@ describe("float parser", () => {
     );
   });
   test("consume float error", () => {
-    checkError(float("123"), new ParseError("sequence", 3, new ParseError("bytes", 0, null)));
+    checkError(
+      float("123"),
+      new ParseError("sequence", 3, new ParseError("bytes", 0, null))
+    );
   });
 });
