@@ -73,7 +73,7 @@ export class ParseError extends Error {
     let res = `Parse error at row ${loc.row + 1}, col ${
       loc.col + 1
     }, caused by ${this.cause}\n`;
-    let line = `${loc.row + 1}: `;
+    const line = `${loc.row + 1}: `;
     res += line;
     res += `${loc.line}\n`;
     for (let i = 0; i < line.length + loc.col; i++) {

@@ -26,11 +26,16 @@
     "build": "tsc",
     "prebuild": "rm -rf dist",
     "format": "prettier -w src",
+    "lint": "eslint src",
+    "fix": "eslint --fix src",
     "prepublish": "yarn run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
     "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.7.1",
     "typescript": "^4.8.2"
   }

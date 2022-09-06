@@ -10,7 +10,7 @@ import { ParseError } from "./error";
 // If one of the parsers failed to parse input, then return ParseError.
 export const sequence = (...ps: ParserFunc<any>[]): ParserFunc<any[]> => {
   return (input: ParseInput): ParseResult<any[]> => {
-    let result = [];
+    const result = [];
     let remain = input;
     for (const p of ps) {
       const res = p(remain);

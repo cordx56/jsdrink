@@ -11,7 +11,7 @@ export const inputToBytes = (input: ParseInput): Uint8Array => {
 
 export const bytesToString = (
   bytes: Uint8Array,
-  encoding: string = "utf-8"
+  encoding = "utf-8"
 ): string => {
   return new TextDecoder(encoding).decode(bytes);
 };
@@ -83,7 +83,7 @@ const many = <T>(
   errStr: "many0" | "many1"
 ): ParserFunc<(T | null)[]> => {
   return (input: ParseInput): ParseResult<(T | null)[]> => {
-    let result = [];
+    const result = [];
     let remain = input;
     for (let i = 0; ; i++) {
       const remainLen = remain.length;
