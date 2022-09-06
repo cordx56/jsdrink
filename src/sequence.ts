@@ -15,7 +15,7 @@ export const sequence = (...ps: ParserFunc<any>[]): ParserFunc<any[]> => {
     for (const p of ps) {
       const res = p(remain);
       if (res instanceof ParseError) {
-        return new ParseError("sequence", remain.length, res);
+        return new ParseError("sequence", input.length, res);
       }
       result.push(res.parsed);
       remain = res.remain;

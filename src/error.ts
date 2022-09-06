@@ -33,14 +33,12 @@ export class Location {
 // ParseFailure contains the name of the function that caused the parse error,
 // the number of bytes remaining from the point where the error occurred,
 // and the parent error, if any.
-export class ParseError extends Error {
+export class ParseError {
   constructor(
     public readonly cause: FailureCause,
     public readonly remainLength: number,
     public readonly parentError: ParseError | null
-  ) {
-    super();
-  }
+  ) {}
   // getErrorFunction takes an input as argument and
   // outputs the location of the error as Location.
   getErrorLocation = (input: ParseInput): Location => {

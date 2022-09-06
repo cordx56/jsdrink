@@ -20,15 +20,15 @@ const checkBytesEqual = (a: ParseInput, b: ParseInput): boolean => {
 export const bytes = (test: ParseInput): ParserFunc<Uint8Array> => {
   return (input: ParseInput): ParseResult<Uint8Array> => {
     const inputBytes = inputToBytes(input);
-    const parseBytes = inputToBytes(test);
-    if (inputBytes.length < parseBytes.length) {
+    const testBytes = inputToBytes(test);
+    if (inputBytes.length < testBytes.length) {
       return new ParseError("bytes", inputBytes.length, null);
     }
     if (
-      checkBytesEqual(parseBytes, inputBytes.subarray(0, parseBytes.length))
+      checkBytesEqual(testBytes, inputBytes.subarray(0, testBytes.length))
     ) {
-      const remainBytes = inputBytes.subarray(parseBytes.length);
-      return new ParseSuccess(parseBytes, remainBytes);
+      const remainBytes = inputBytes.subarray(testBytes.length);
+      return new ParseSuccess(testBytes, remainBytes);
     } else {
       return new ParseError("bytes", inputBytes.length, null);
     }
@@ -37,7 +37,7 @@ export const bytes = (test: ParseInput): ParserFunc<Uint8Array> => {
 
 const indexOfArray = (target: Uint8Array, search: Uint8Array): number => {
   // later implement KNP
-  for (let i = 0; i < target.length - search.length; i++) {
+  for (let i = 0; i <= target.length - search.length; i++) {
     if (checkBytesEqual(target.subarray(i, i + search.length), search)) {
       return i;
     }
