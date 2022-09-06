@@ -21,7 +21,7 @@ describe("optional parser", () => {
   });
   test("optional not consume parse", () => {
     expect(optional(bytes("abc"))("123abc")).toStrictEqual(
-      new ParseSuccess(null, inputToBytes("123abc"))
+      new ParseSuccess(null, "123abc")
     );
   });
 });
