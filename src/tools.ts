@@ -12,7 +12,7 @@ export const inputToString = (input: ParseInput): string => {
   if (typeof input === "string") {
     return input;
   } else {
-    return new TextDecoder().decode(input);
+    return bytesToString(input);
   }
 };
 
