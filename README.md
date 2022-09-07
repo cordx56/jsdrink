@@ -14,6 +14,7 @@ jsdrink does not depend on non-standard libraries except dev-dependencies.
 jsdrink reads input bytes or string and applies parsers in sequence and parses them into the desired structures.
 
 ## Documentation
+See [https://cordx.net/jsdrink/](https://cordx.net/jsdrink/).
 
 ## Example
 ### Example code
