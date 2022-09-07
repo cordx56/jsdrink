@@ -11,4 +11,4 @@ export {
   tf,
   transform,
 } from "./tools";
-export { sequence, next } from "./sequence";
+export { sequence, Pair, next } from "./sequence";

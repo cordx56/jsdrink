@@ -22,7 +22,9 @@ export type FailureCause =
   | "alphaNumeric1"
   | "string";
 
-// Location contains row number, col number and error line.
+/**
+ * Location contains row number, col number and error line.
+ */
 export class Location {
   constructor(
     public readonly row: number,
@@ -31,17 +33,21 @@ export class Location {
   ) {}
 }
 
-// ParseFailure contains the name of the function that caused the parse error,
-// the number of bytes remaining from the point where the error occurred,
-// and the parent error, if any.
+/**
+ * ParseFailure contains the name of the function that caused the parse error,
+ * the number of bytes remaining from the point where the error occurred,
+ * and the parent error, if any.
+ */
 export class ParseError {
   constructor(
     public readonly cause: FailureCause,
     public readonly remainLength: number,
     public readonly parentError: ParseError | null
   ) {}
-  // getErrorFunction takes an input as argument and
-  // outputs the location of the error as Location.
+  /**
+   * getErrorFunction takes an input as argument and
+   * outputs the location of the error as Location.
+   */
   getErrorLocation = (input: ParseInput): Location => {
     let row = 0;
     let col = 0;
@@ -65,8 +71,10 @@ export class ParseError {
     }
     return new Location(row, col, line);
   };
-  // formatErrorMessage method takes an input as
-  // argument and returns a formatted error message.
+  /**
+   * formatErrorMessage method takes an input as
+   * argument and returns a formatted error message.
+   */
   formatErrorMessage = (input: ParseInput): string => {
     const loc = this.getErrorLocation(input);
     let res = `Parse error at row ${loc.row + 1}, col ${

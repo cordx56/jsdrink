@@ -1,13 +1,15 @@
 import { ParseInput, ParseResult, ParserFunc, ParseSuccess } from "./jsdrink";
 import { ParseError } from "./error";
 
-// sequence returns a function that takes input as argument and
-// returns parse result.
-// The function returns by sequesnce function tries to parse input
-// in order of sequence function's arguments.
-// If all parsers passed as arguments succeeds to parse input,
-// then return ParseSuccess[T[]].
-// If one of the parsers failed to parse input, then return ParseError.
+/**
+ * sequence returns a function that takes input as argument and
+ * returns parse result.
+ * The function returns by sequesnce function tries to parse input
+ * in order of sequence function's arguments.
+ * If all parsers passed as arguments succeeds to parse input,
+ * then return ParseSuccess[T[]].
+ * If one of the parsers failed to parse input, then return ParseError.
+ */
 export const sequence = (...ps: ParserFunc<any>[]): ParserFunc<any[]> => {
   return (input: ParseInput): ParseResult<any[]> => {
     const result = [];
@@ -24,13 +26,17 @@ export const sequence = (...ps: ParserFunc<any>[]): ParserFunc<any[]> => {
   };
 };
 
-// Pair is a struct that contains pair of datum
-type Pair<T, U> = {
+/**
+ * Pair is a struct that contains pair of datum
+ */
+export type Pair<T, U> = {
   prev: T | null;
   next: U | null;
 };
 
-// next function takes two parsers as arguments and parses the input in order.
+/**
+ * next function takes two parsers as arguments and parses the input in order.
+ */
 export const next = <T, U>(
   p0: ParserFunc<T>,
   p1: ParserFunc<U>

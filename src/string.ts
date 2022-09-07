@@ -2,7 +2,9 @@ import { ParseInput, ParseResult, ParserFunc, ParseSuccess } from "./jsdrink";
 import { ParseError } from "./error";
 import { getCharCode, inputToString } from "./tools";
 
-// string function tries to parse a string passed as an argument.
+/**
+ * string function tries to parse a string passed as an argument.
+ */
 export const string = (test: ParseInput): ParserFunc<string> => {
   return (input: ParseInput): ParseResult<string> => {
     const inputString = inputToString(input);
@@ -19,8 +21,10 @@ export const string = (test: ParseInput): ParserFunc<string> => {
   };
 };
 
-// until function returns the input until the first string
-// occurrence specified in the argument.
+/**
+ * until function returns the input until the first string
+ * occurrence specified in the argument.
+ */
 export const until = (...strs: ParseInput[]): ParserFunc<string> => {
   return (input: ParseInput): ParseResult<string> => {
     let pos = -1;
@@ -82,21 +86,29 @@ const isMultiSpace = (s: string): boolean => {
   return isSpace(s) || s === "\n" || s === "\r";
 };
 
-// space0 matches zero or more spaces (" " or "\t").
+/**
+ * space0 matches zero or more spaces (" " or "\t").
+ */
 export const space0 = (input: ParseInput): ParseResult<string> => {
   return checkStringSequence(input, isSpace, 0, "space0");
 };
-// space1 matches one or more spaces (" " or "\t").
+/**
+ * space1 matches one or more spaces (" " or "\t").
+ */
 export const space1 = (input: ParseInput): ParseResult<string> => {
   return checkStringSequence(input, isSpace, 1, "space1");
 };
-// multiSpace0 matches zero or more spaces and line breaks
+/**
+ * multiSpace0 matches zero or more spaces and line breaks
+ */
 // (" " or "\t" or "\n" or "\r").
 export const multiSpace0 = (input: ParseInput): ParseResult<string> => {
   return checkStringSequence(input, isMultiSpace, 0, "multiSpace0");
 };
-// multiSpace1 matches one or more spaces and line breaks
-// (" " or "\t" or "\n" or "\r").
+/**
+ * multiSpace1 matches one or more spaces and line breaks
+ * (" " or "\t" or "\n" or "\r").
+ */
 export const multiSpace1 = (input: ParseInput): ParseResult<string> => {
   return checkStringSequence(input, isMultiSpace, 1, "multiSpace1");
 };
@@ -114,19 +126,27 @@ const isNumeric = (s: string): boolean => {
   );
 };
 
-// alpha0 function matches alphabets of zero or more characters.
+/**
+ * alpha0 function matches alphabets of zero or more characters.
+ */
 export const alpha0 = (input: ParseInput): ParseResult<string> => {
   return checkStringSequence(input, isAlpha, 0, "alpha0");
 };
-// alpha1 function matches alphabets of one or more characters.
+/**
+ * alpha1 function matches alphabets of one or more characters.
+ */
 export const alpha1 = (input: ParseInput): ParseResult<string> => {
   return checkStringSequence(input, isAlpha, 1, "alpha1");
 };
-// numeric0 function matches numeric sequences of zero or more characters.
+/**
+ * numeric0 function matches numeric sequences of zero or more characters.
+ */
 export const numeric0 = (input: ParseInput): ParseResult<string> => {
   return checkStringSequence(input, isNumeric, 0, "numeric0");
 };
-// numeric1 function matches numeric sequences of one or more characters.
+/**
+ * numeric1 function matches numeric sequences of one or more characters.
+ */
 export const numeric1 = (input: ParseInput): ParseResult<string> => {
   return checkStringSequence(input, isNumeric, 1, "numeric1");
 };
@@ -135,13 +155,17 @@ const isAlphaNumeric = (s: string): boolean => {
   return isAlpha(s) || isNumeric(s);
 };
 
-// alphaNumeric0 function matches a sequence of zero or more
-// alphabetic or numeric characters.
+/**
+ * alphaNumeric0 function matches a sequence of zero or more
+ * alphabetic or numeric characters.
+ */
 export const alphaNumeric0 = (input: ParseInput): ParseResult<string> => {
   return checkStringSequence(input, isAlphaNumeric, 0, "alphaNumeric0");
 };
-// alphaNumeric1 function matches a sequence of one or more
-// alphabetic or numeric characters.
+/**
+ * alphaNumeric1 function matches a sequence of one or more
+ * alphabetic or numeric characters.
+ */
 export const alphaNumeric1 = (input: ParseInput): ParseResult<string> => {
   return checkStringSequence(input, isAlphaNumeric, 1, "alphaNumeric1");
 };

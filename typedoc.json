@@ -1,0 +1,9 @@
+{
+  "entryPoints": [
+    "src/index.ts",
+    "src/bytes.ts",
+    "src/string.ts",
+    "src/number.ts"
+  ],
+  "out": "docs"
+}

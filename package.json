@@ -36,7 +36,8 @@
     "lint": "eslint src",
     "fix": "eslint --fix src",
     "prepublish": "yarn run build",
-    "test": "jest"
+    "test": "jest",
+    "doc": "typedoc"
   },
   "devDependencies": {
     "@types/jest": "^29.0.0",
@@ -48,6 +49,7 @@
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.8",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.23.14",
     "typescript": "^4.8.2"
   }
 }

@@ -12,7 +12,9 @@ const bytesToNumber = (input: Uint8Array): number => {
   return res;
 };
 
-// integer parses an input integer and returns it as a value of type number.
+/**
+ * integer parses an input integer and returns it as a value of type number.
+ */
 export const integer = (input: ParseInput): ParseResult<number> => {
   return tf(numeric1, (numeric: Uint8Array | null) => {
     if (numeric === null) {
@@ -22,7 +24,9 @@ export const integer = (input: ParseInput): ParseResult<number> => {
   })(input);
 };
 
-// float parses a float number and returns it as a value of type number.
+/**
+ * float parses a float number and returns it as a value of type number.
+ */
 export const float = (input: ParseInput): ParseResult<number> => {
   return tf(
     sequence(integer, bytes("."), numeric1),
