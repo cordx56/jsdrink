@@ -12,7 +12,7 @@ export type ParseInput = Uint8Array | string;
  * The type parameter T appears in the parsed field.
  * The type of the parsed field is T.
  * The parsed field may be null (e.g. Optional function
- * may return a ParseResult where the Parsed field is nil).
+ * may return a ParseResult where the Parsed field is null).
  *
  * The Remain field is the remainder of the parsed input.
  */
@@ -30,8 +30,8 @@ export class ParseSuccess<T> {
  *
  * The type parameter T appears in the Parsed field.
  * The type of the Parsed field is a pointer of T.
- * The Parsed field may be nil (e.g. Optional function
- * may return a ParseResult where the Parsed field is nil).
+ * The Parsed field may be null (e.g. Optional function
+ * may return a ParseResult where the Parsed field is null).
  *
  * The Remain field is the remainder of the parsed input.
  */
